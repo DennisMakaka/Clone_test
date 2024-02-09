@@ -7,6 +7,7 @@ Unittest classes:
     TestBaseModel_to_dict
 """
 import os
+import models
 import unittest
 from datetime import datetime
 from time import sleep
@@ -177,5 +178,12 @@ class TestBaseModel_to_dict(unittest.TestCase):
         }
         self.assertDictEqual(bm.to_dict(), tdict)
 
-    def test_contrast_to_dict_dunder
+    def test_to_dict_with_arg(self):
+        bm = BaseModel()
+        with self.assertRaises(TypeError):
+            bm.to_dict(None)
+
+
+if __name__ == "__main__":
+    unittest.main()
 
