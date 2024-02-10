@@ -7,10 +7,17 @@ import models
 from models.base_model import BaseModel
 from datetime import datetime
 from time import sleep
+<<<<<<< HEAD
 
 class TestBaseModel(unittest.TestCase):
     """Unittests for the BaseModel class."""
 
+=======
+
+class TestBaseModel(unittest.TestCase):
+    """Unittests for the BaseModel class."""
+
+>>>>>>> b50bb5e2dfefd959e2bcc5b3b29dcd89e53283e1
     @classmethod
     def setUpClass(cls):
         """Setup class for the tests."""
@@ -92,6 +99,7 @@ class TestBaseModel(unittest.TestCase):
         }
         self.assertDictEqual(self.bm.to_dict(), expected_dict)
 
+<<<<<<< HEAD
     def test_init_with_dict_representstion(self):
         """Test __init__ method with dictionary representstion."""
         bm_dict = self.bm.to.dict()
@@ -106,3 +114,9 @@ class TestBaseModel(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+
+if __name__ == "__main__":
+    unittest.main()
+
+>>>>>>> b50bb5e2dfefd959e2bcc5b3b29dcd89e53283e1
