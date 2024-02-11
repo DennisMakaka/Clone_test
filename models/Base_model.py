@@ -8,7 +8,6 @@ classBaseModel:
 
     def __init__(self):
         """Initializes BaseModel instance."""
-<<<<<<< HEAD
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -20,12 +19,10 @@ classBaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
             models.storage.new(self)
-=======
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
->>>>>>> b50bb5e2dfefd959e2bcc5b3b29dcd89e53283e1
 
     def __str__(self):
         """Returns string representation of BaseModel instance."""
