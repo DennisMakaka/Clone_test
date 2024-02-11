@@ -16,8 +16,8 @@ from models.review import Review
 def parse(arg):
     """
     This function takes in a string argument and returns a list of arguments.
-    If the argument contains curly braces, it will treat the contents as a set of options.
-    If the argument contains square brackets, it will treat the contents as a list of options.
+    If the argument contains curly braces,
+    If the argument contains square brackets,
     If neither of these are present, it will split the argument on commas.
     """
     curly_braces = re.search(r"\{(.*?)}", arg)
@@ -35,12 +35,10 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return retl
-    
 
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter.
-
     Attributes:
         prompt (str): The command prompt.
     """
@@ -222,4 +220,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
