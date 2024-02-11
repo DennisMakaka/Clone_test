@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Command interpreter module for HBNB project."""
-
+"""Defines the HBnB console."""
 import cmd
 import re
 from shlex import split
@@ -13,87 +12,47 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
-
-def parse(arg):
-    """
-    This function takes in a string argument and returns a list of arguments.
-    If the argument contains curly braces,
-    If the argument contains square brackets,
-    If neither of these are present, it will split the argument on commas.
-    """
-    curly_braces = re.search(r"\{(.*?)}", arg)
-    brackets = re.search(r"\[(.*?)\]", arg)
-    if curly_braces is None:
-        if brackets is None:
-            return [i.strip(",") for i in split(arg)]
-        else:
-            lexer = split(arg[:brackets.span()[0]])
-            retl = [i.strip(",") for i in lexer]
-            retl.append(brackets.group())
-            return retl
-    else:
-        lexer = split(arg[:curly_braces.span()[0]])
-        retl = [i.strip(",") for i in lexer]
-        retl.append(curly_braces.group())
-        return retl
-
-
-class HBNBCommand(cmd.Cmd):
-    """Defines the HolbertonBnB command interpreter.
-    Attributes:
-        prompt (str): The command prompt.
-    """
-
-    prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
-
-    def emptyline(self):
-        """Do nothing upon receiving an empty line."""
-        pass
-
-
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class."""
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
+
+    def do_create(self, arg):
+        """Create a new instance of BaseModel."""
+        pass
+
+    def do_show(self, arg):
+        """Prints the string representation of an instance."""
+        pass
+
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id."""
+        pass
+
+    def do_all(self, arg):
+        """Prints all string representation of all instances."""
+        pass
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id."""
+        pass
+
+    def emptyline(self):
+        """Do nothing when an empty line is entered."""
+        pass
 
     def do_quit(self, arg):
-        "Quit command to exit the program."""
+        """Quit command to exit the program."""
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program."""
-        print("") # Print a newline before exiting
+        """Exit the program at end of file."""
+        print("")
         return True
-
-    def emptyline(self):
-        """Do nothing on empty line."""
-        pass
-
-    def help_quit(self):
-        "Print help message for quit command."""
-        print("Quit command to exit the program.")
-
-    def help_EOF(self):
-        """Print help message for EOF command."""
-        print("EOF command to exit the program.")
-
-    def help_help(self):
-        """Print help message for help command."""
-        print("Help command to get information about commands.")
-
+    
     def do_create(self, arg):
         """
-        Creates a new instance of BaseModel, saves it to the JSON file,
-        and prints the id.
+        Creates a new instance of BaseModel, saves it to the JSON file, and prints the id.
         Usage: create <class name>
         """
         if not arg:
